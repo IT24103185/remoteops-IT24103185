@@ -1,0 +1,22 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -pthread
+REG_NO = IT24103185
+LAST3 = 185
+
+AGENT_SRC = agent_$(LAST3).c
+CONTROLLER_SRC = controller_$(LAST3).c
+AGENT_BIN = agent_$(LAST3)
+CONTROLLER_BIN = controller_$(LAST3)
+
+all: $(AGENT_BIN) $(CONTROLLER_BIN)
+
+$(AGENT_BIN): $(AGENT_SRC)
+	$(CC) $(CFLAGS) $(AGENT_SRC) -o $(AGENT_BIN)
+
+$(CONTROLLER_BIN): $(CONTROLLER_SRC)
+	$(CC) $(CFLAGS) $(CONTROLLER_SRC) -o $(CONTROLLER_BIN)
+
+clean:
+	rm -f $(AGENT_BIN) $(CONTROLLER_BIN)
+	rm -rf ./agentfiles/
+	rm -f remoteops_$(REG_NO).log
