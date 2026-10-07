@@ -1,4 +1,3 @@
-cat << 'EOF' > Design_Diary.md
 # Design Diary - RemoteOps System Architecture
 
 **Module:** IE3090 - Network Programming  
@@ -25,15 +24,6 @@ The RemoteOps system is a lightweight, concurrent client server tool built in C 
 
 ## 2. System Architecture and Component Mapping
 
-Controller (client)                             Agent (Server)
-|                                             |
-|---------- TCP Connect (Port 9410) --------->|
-|                                             |
-|-------------- AUTH OPS-3185 --------------->| Check Token
-|<---------- OK AUTH SUCCESS SID:5813 --------|
-|                                             |
-|---------------- EXEC DATE ----------------->| Whitelist Check
-|                                             | lock mutex and log
-|<------------ Output [SID = 5813] -----------|
-|                                             |
-
+<p align="center">
+  <img src="sequence_diagram.png" alt="Sequence Diagram of RemoteOps Session" width="600"/>
+</p>
